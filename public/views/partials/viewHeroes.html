@@ -1,9 +1,9 @@
 <div id="viewHeroes" ng-repeat="hero in allHeroes">
-  <div>
+  <div class="hero">
     <h3>{{hero.first_name}} {{hero.last_name}}</h3>
     <p> AKA: {{hero.alias}}</p>
     <p> Location: {{hero.city}}</p>
     <p> Super Powers: {{hero.power_name}}</p>
-    <button ng-click="delete(hero)">Delete</button>
+    <button class =" btn btn-danger" ng-click="delete(hero)">Delete</button>
   </div>
 </div>

@@ -33,6 +33,8 @@ populateSelect();
         data: heroToSend,
       }).then(function ( response ){
         console.log('back from server with:', response);
+         var addHero = angular.element( document.querySelector( '#addHero' ));
+        addHero.append('<p class="text-primary"> <a href="#heroes"> Your hero is being tracked! Click to view all tracked heroes.</a></p>');
       });
     };//end addHero
 

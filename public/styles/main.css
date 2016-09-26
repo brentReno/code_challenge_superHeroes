@@ -1,0 +1,30 @@
+h1{
+  text-align: center;
+}
+#addHero{
+  display: block;
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar{
+  text-align: center;
+  width:20%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.subheading{
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+}
+.hero{
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  border: 1px solid black;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}

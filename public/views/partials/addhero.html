@@ -8,6 +8,6 @@
   <label for="city">City:</label>
   <input type="text" name="city"  ng-model="city"><br>
   <label for="superPower">Super Power:</label>
-  <select ng-model="superPower" ng-options="e as e.type for e in enum track by e.type" name="superPowers"></select>
-  <input type="button" name="add" value="Add" ng-click="addHero()">
+  <select  ng-model="superPower" ng-options="e as e.type for e in enum track by e.type" name="superPowers"></select><br>
+  <input class="btn btn-info" type="button" name="add" value="Add" ng-click="addHero()">
 </div>

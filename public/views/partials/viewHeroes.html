@@ -1,3 +1,8 @@
-<div id="viewHeroes">
-  <p>TEst</p>
-      </div>
+<div id="viewHeroes" ng-repeat="hero in allHeroes">
+  <div>
+    <h3>{{hero.first_name}} {{hero.last_name}}</h3>
+    <p> AKA: {{hero.alias}}</p>
+    <p> Location: {{hero.city}}</p>
+    <p> Super Powers: {{hero.power_name}}
+  </div>
+</div>

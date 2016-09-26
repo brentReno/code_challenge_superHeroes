@@ -13,6 +13,14 @@ myApp.controller("heroesController", ["$scope", "$http", function($scope, $http)
       power_name: $scope.superPower
     };// end heroToSend
     console.log("this is the hero", heroToSend);
-  };//end addHero
 
+  //post call
+  $http({
+    method: 'POST',
+      url: '/heroes',
+      data: heroToSend,
+    }).then(function ( response ){
+      console.log('back from server with:', response);
+    });
+  };//end addHero
 }]);// end heroes controller

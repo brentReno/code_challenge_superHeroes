@@ -76,3 +76,12 @@ app.post('/heroes', function(req, res){
   });// end newHero save
 
 });
+
+//delte heroes route
+app.delete('/heroes', function(req, res){
+   console.log('hit delete route with:',req.body);
+  Heroes.findByIdAndRemove({"_id":req.body._id}, function(){
+    console.log("Hero "+ req.body.id +" has been deleted.");
+    res.send(200);
+  });// end callback
+});// end delete route

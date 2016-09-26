@@ -12,4 +12,23 @@ var viewHeroes= function(){
     });// end http Call
   };// end view heroes
   viewHeroes();
+
+  $scope.delete=function(hero){
+    console.log(" Hero to delete", hero);
+    // create object to send
+    var heroToDelete = {
+      _id: hero._id
+    };
+    console.log(heroToDelete);
+    $http({
+      method: 'DELETE',
+      url: '/heroes',
+      data: heroToDelete,
+      headers: {"Content-Type": "application/json;charset=utf-8"}
+    }).then(function ( response ){
+      console.log('back from server with:', response);
+    });
+    viewHeroes();
+  
+  };// end delete hero
 }]);

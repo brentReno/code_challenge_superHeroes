@@ -4,26 +4,19 @@
     <meta charset="utf-8">
     <title>Code Challenge 5</title>
     <script src="../vendors/angular.min.js" charset="utf-8"></script>
+    <script src="../vendors/angular-route.min.js" charset="utf-8"></script>
     <script src="../scripts/clientapp.js" charset="utf-8"></script>
+    <script src="../scripts/controllers/addHero.js" charset="utf-8"></script>
+    <script src="../scripts/controllers/viewHeroes.js" charset="utf-8"></script>
   </head>
   <body ng-app="myApp">
     <h1>Hello World!</h1>
-    <div ng-controller="heroesController">
-      <div id="addHero">
-        <label for="alias">Alias:</label>
-        <input type="text" name="alias" ng-model="alias"><br>
-        <label for="firstName">First Name:</label>
-        <input type="text" name="firstName"  ng-model="firstName"><br>
-        <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName"   ng-model="lastName"><br>
-        <label for="city">City:</label>
-        <input type="text" name="city"  ng-model="city"><br>
-        <label for="superPower">Super Power:</label>
-        <input type="text" name="superPower" ng-model="superPower"><br>
-        <input type="button" name="add" value="Add" ng-click="addHero()">
-      </div>
-      <div id="viewHeroes">
-      </div>
-    </div>
+    <div id="navigation"  >
+    <ul >
+      <li><a href="#heroes">View the Heroes</a></li>
+      <li><a href="#add">Add a Hero</a></li>
+    </ul>
+  </div>
+      <main ng-view></main>
   </body>
 </html>

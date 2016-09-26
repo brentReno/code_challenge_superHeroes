@@ -1,4 +1,20 @@
 myApp.controller("addHeroController", ["$scope", "$http", function($scope, $http){
+   var populateSelect = function(){
+     $http({
+    method: 'GET',
+    url: '/heroes/enum'
+  }).then(function successCallback(response) {
+    $scope.enum = response.data.map(function(type) {
+      return {type: type };
+    });
+    $scope.selected = $scope.enum[0];
+    console.log('enum =', $scope.enum);
+  }, function errorCallback(response) {
+    console.log('err');
+  });
+};// end populateSelect
+populateSelect();
+
   $scope.addHero = function(){
     // create hero to send object
     var heroToSend ={
@@ -6,7 +22,7 @@ myApp.controller("addHeroController", ["$scope", "$http", function($scope, $http
       first_name: $scope.firstName,
       last_name: $scope.lastName,
       city: $scope.city,
-      power_name: $scope.superPower
+      power_name: $scope.superPower.type
     };// end heroToSend
     console.log("this is the hero", heroToSend);
 

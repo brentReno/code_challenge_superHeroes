@@ -85,3 +85,8 @@ app.delete('/heroes', function(req, res){
     res.send(200);
   });// end callback
 });// end delete route
+
+//enum route
+app.get('/heroes/enum', function(req, res) {
+  res.send(Heroes.schema.path('power_name').enumValues);
+});

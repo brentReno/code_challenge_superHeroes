@@ -7,6 +7,7 @@ var viewHeroes= function(){
       method: 'GET',
       url: '/heroes'
     }).then(function ( response ){
+      console.log(response);
       console.log('back from server with:', response.data);
       $scope.allHeroes =response.data;
     });// end http Call
@@ -29,6 +30,6 @@ var viewHeroes= function(){
       console.log('back from server with:', response);
     });
     viewHeroes();
-  
+
   };// end delete hero
 }]);

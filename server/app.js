@@ -22,3 +22,10 @@ app.get('/', function(req, res){
 
 // set up public as static
 app.use(express.static('public'));
+
+// get heroes route
+
+app.get('/heroes', function(req, res){
+  console.log("hit heroes route");
+  res.sendStatus(200);
+});//end get heroes

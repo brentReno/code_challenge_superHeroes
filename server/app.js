@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
 var mongoose = require('mongoose');
-var mongoURI = "mongodb://localhost:27017/superHeroes";
+var mongoURI = "mongodb://localhost:27017/Heroes";
 var MongoDB = mongoose.connect(mongoURI).connection;
 
 // set port
@@ -24,8 +24,14 @@ app.get('/', function(req, res){
 app.use(express.static('public'));
 
 // get heroes route
-
 app.get('/heroes', function(req, res){
   console.log("hit heroes route");
   res.sendStatus(200);
 });//end get heroes
+
+//post heroes route
+app.post('/heroes', function(req, res){
+  console.log("hit post heroes");
+  console.log('Hero Added');
+  res.sendstatus(201);
+});

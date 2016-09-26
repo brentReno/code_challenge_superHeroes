@@ -5,6 +5,11 @@ var path = require('path');
 var mongoose = require('mongoose');
 var mongoURI = "mongodb://localhost:27017/Heroes";
 var MongoDB = mongoose.connect(mongoURI).connection;
+var Heroes = require('../models/superHeroes');
+
+//use bodyParser
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 // set port
 app.set("port", (process.env.PORT || 3030));
@@ -13,6 +18,15 @@ app.set("port", (process.env.PORT || 3030));
 app.listen(app.get("port"), function(){
   console.log("listening on:", app.get("port"));
 });//end spin up server
+
+// mongo db connection error handeling
+MongoDB.on('error', function (err) {
+    console.log('mongodb connection error:', err);
+});
+
+MongoDB.once('open', function () {
+  console.log('mongodb connection open!');
+});
 
 //base url hit
 app.get('/', function(req, res){
@@ -26,12 +40,39 @@ app.use(express.static('public'));
 // get heroes route
 app.get('/heroes', function(req, res){
   console.log("hit heroes route");
-  res.sendStatus(200);
+  Heroes.find({}, function(err, heroesResults){
+      if(err){
+        console.log(err);
+        res.sendStatus(500);
+      }
+      else{
+        console.log(heroesResults);
+        res.send(heroesResults);
+      }
+    });//end call back
 });//end get heroes
 
 //post heroes route
 app.post('/heroes', function(req, res){
   console.log("hit post heroes");
-  console.log('Hero Added');
-  res.sendstatus(201);
+  //create hero object
+  var newHero = new Heroes({
+    alias: req.body.alias,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    city: req.body.city,
+    power_name: req.body.power_name
+  });// end new hero
+
+  // save hero
+  newHero.save(function(err){
+    if(err){
+      console.log("error occurred:", err);
+    }
+    else{
+      console.log('Hero Added');
+      res.sendStatus(201);
+    }
+  });// end newHero save
+
 });
